@@ -1,0 +1,31 @@
+﻿<UserControl x:Class="ClientApplication.View.ChatControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClientApplication.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="350" d:DesignWidth="300">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+            <GroupBox x:Name="groupBoxChat" Header="Easy Chat - Online" HorizontalAlignment="Left" Height="280" Margin="10,10,0,-227.6" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="280">
+                <Grid>
+                    <!--<ListBox x:Name="listBoxChat" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="267" Margin="0,0,0,-0.4"/>-->
+                </Grid>
+            </GroupBox>
+
+            <Button x:Name="buttonLeave" Content="Leave" Grid.Row="1" Grid.Column="0" FontSize="13" HorizontalAlignment="Left" Margin="10,9.8,0,0" VerticalAlignment="Top" Width="40" Height="29"/>
+            <Button x:Name="buttonSend" Content="Send" Grid.Row="1" Grid.Column="1" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="69.2,9.8,0,0" VerticalAlignment="Top" Width="75" Height="29"/>
+            <TextBox x:Name="textBoxMessage" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="29" Margin="55,9.8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Text="..." VerticalAlignment="Top" Width="154"/>
+        </Grid>
+
+    </Grid>
+</UserControl>

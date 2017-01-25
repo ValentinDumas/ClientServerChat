@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ClientApplication.View.ConnexionControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ClientApplication.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <GroupBox x:Name="groupBoxConnexion" Header="Connexion" HorizontalAlignment="Left" Height="280" Margin="10,10,0,-227.6" VerticalAlignment="Top" Grid.RowSpan="2" Width="280">
+            <Grid Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="85"/>
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label x:Name="labelPseudo" Content="Pseudo" Grid.Row="0" FontSize="13" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Width="178"/>
+                <TextBox x:Name="textBoxPseudo" Grid.Row="0" VerticalContentAlignment="Center" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="39,41,0,0" TextWrapping="Wrap" Text="" FontWeight="Bold" VerticalAlignment="Top" Width="178"/>
+                <Label x:Name="labelServerIp" Content="Server IP" Grid.Row="1" FontSize="13" HorizontalAlignment="Left" Margin="39,10.2,0,0" VerticalAlignment="Top" Width="178"/>
+                <TextBox x:Name="textBoxServerIp" Grid.Row="1" VerticalContentAlignment="Center" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="39,41,0,0" TextWrapping="Wrap" Text="192.168.1.13" FontWeight="Bold" VerticalAlignment="Top" Width="178"/>
+                <Button x:Name="buttonConnexion" Content="Connexion" Grid.Row="2" HorizontalAlignment="Left" Margin="39,33.4,0,0" FontSize="14" VerticalAlignment="Top" Width="178" Height="35"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>
