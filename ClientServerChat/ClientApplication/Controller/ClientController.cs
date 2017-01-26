@@ -11,32 +11,32 @@ namespace ClientApplication.Controller
     class ClientController : Controller
     {
         public ClientController(ClientWindow clientWindow ) {
-            this.clientWindow = clientWindow;
+            ClientWindow = clientWindow;
             InitializeEvents( );            
         }
 
         public void InitializeEvents( ) {
-            clientWindow.EventStart += ClientWindow_EventStart;
+            ClientWindow.EventStart += ClientWindow_EventStart;
         }
 
         private void ClientWindow_EventStart( object sender, EventArgs e ) {
             if ( !ClientSettings.CONNECTED ) {
-                model.OpenClientSession( );
+                Model.ClientSession.Open( );
                 Thread th = new Thread(ListenForResponse);
                 th.Start( );
             }
             ClientSettings.CONNECTED = true;
         }
 
-        public void StopEvent( ) {
-
+        public void EventStop( ) {
+            Model.ClientSession.Close( );
         }
 
         private void ListenForResponse( ) {
             while ( true ) {
-                string reponse = model.Cs.TextReader.ReadLine();
+                string reponse = Model.ClientSession.TextReader.ReadLine();
                 // @TOSEE
-                clientWindow.print( "HAHA [MVC] IT WORKS !" );
+                // clientWindow.print( "HAHA [MVC] IT WORKS !" );
             }
         }
 

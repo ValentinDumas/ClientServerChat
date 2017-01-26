@@ -18,6 +18,8 @@
             </Grid.RowDefinitions>
             <GroupBox x:Name="groupBoxChat" Header="Easy Chat - Online" HorizontalAlignment="Left" Height="280" Margin="10,10,0,-227.6" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="280">
                 <Grid>
+                    <TextBlock x:Name="textBlockChat" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Server> Welcome to Easy Chat !" VerticalAlignment="Top" Height="238" Width="247" Margin="10,10,0,0"/>
+
                     <!--<ListBox x:Name="listBoxChat" HorizontalAlignment="Left" Height="258" VerticalAlignment="Top" Width="267" Margin="0,0,0,-0.4"/>-->
                 </Grid>
             </GroupBox>

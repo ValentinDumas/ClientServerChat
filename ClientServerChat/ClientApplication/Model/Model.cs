@@ -9,33 +9,58 @@ using System.Windows.Input;
 
 namespace ClientApplication.Model
 {
-    class Model
-    {
-        private ClientSession _cs;
-        public ClientSession Cs { get { return _cs; } set { _cs = value; } }
-        
+    class Model : IModel {
+
+        private ClientSession _clientSession;
+        public ClientSession ClientSession { get { return _clientSession; } set { _clientSession = value; } }
+
+        // @TODO : ReDo all for IModel;
+        private ConnexionData _connexionData;
+        public ConnexionData ConnexionData { get { return _connexionData; } set { _connexionData = value; } }
+
+        private ChatData _chatData;
+        public ChatData ChatData { get { return _chatData; } set { _chatData = value; } }
+
+        /// <summary>
+        /// Model Constructor : Instanciate all dependencies
+        /// => Improve drastically Objet Reusability
+        /// </summary>
+        public Model( ) {
+            if(ClientSession == null ) {
+                ClientSession = new ClientSession( 
+                    new Socket(
+                        AddressFamily.InterNetwork,
+                        SocketType.Stream,
+                        ProtocolType.Tcp
+                    ),
+                    new IPEndPoint(
+                        IPAddress.Parse( ClientSettings.IP ),
+                        ClientSettings.PORT
+                    )
+                );
+            }
+            if(ConnexionData == null ) {
+                ConnexionData = new ConnexionData( );
+            }
+            if(ChatData == null ) {
+                ChatData = new ChatData( );
+            }
+        }
+
         /// <summary>
         /// Instantiate a ClientSession object and Open a new session
         /// </summary>
         public void OpenClientSession( ) {
-            Cs = new ClientSession(
-                new Socket(
-                    AddressFamily.InterNetwork,
-                    SocketType.Stream,
-                    ProtocolType.Tcp
-                ),
-                new IPEndPoint(
-                    IPAddress.Parse( ClientSettings.IP ),
-                    ClientSettings.PORT
-                )
-            );
+           
+               
         }
 
         /// <summary>
         /// Close Client Session and dispose resources
         /// </summary>
         public void CloseClientSession( ) {
-            Cs.Close( );
+            ClientSession.Close( );
         }
+
     }
 }

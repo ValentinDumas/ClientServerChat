@@ -25,7 +25,6 @@ namespace ClientApplication.Model
             this._socket = socket;
             this._ipEndPoint = ipEndPoint;
             // Socket --> Connection to Access Point
-            Open( );
         }
 
         public void Open( ) {

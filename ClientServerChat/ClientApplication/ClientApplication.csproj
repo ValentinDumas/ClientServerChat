@@ -61,8 +61,10 @@
     <Compile Include="Controller\ClientController.cs" />
     <Compile Include="Controller\ConnexionController.cs" />
     <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Model\ChatData.cs" />
     <Compile Include="Model\ClientSession.cs" />
     <Compile Include="Model\ConnexionData.cs" />
+    <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="View\ChatControl.xaml.cs">
       <DependentUpon>ChatControl.xaml</DependentUpon>

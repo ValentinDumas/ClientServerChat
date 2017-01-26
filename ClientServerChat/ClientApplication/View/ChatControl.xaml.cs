@@ -22,6 +22,29 @@ namespace ClientApplication.View
     {
         public ChatControl( ) {
             InitializeComponent( );
+            InitializeEvents( );
         }
+
+        private void InitializeEvents( ) {
+            buttonLeave.Click += ButtonLeave_Click;
+            buttonSend.Click += ButtonSend_Click;
+        }
+
+        #region Event for button Leave
+        public delegate void EventHandlerLeave( object sender, EventArgs e );
+        public event EventHandlerLeave EventLeave;
+        private void ButtonLeave_Click( object sender, RoutedEventArgs e ) {
+            EventLeave?.Invoke( this, EventArgs.Empty );
+        }
+        #endregion
+
+        #region Event for button Send
+        public delegate void EventHandlerSend( object sender, EventArgs e );
+        public event EventHandlerSend EventSend;
+        private void ButtonSend_Click( object sender, RoutedEventArgs e ) {
+            EventSend?.Invoke( this, EventArgs.Empty );
+        }
+        #endregion
+
     }
 }

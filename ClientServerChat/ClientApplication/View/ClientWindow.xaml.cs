@@ -27,17 +27,8 @@ namespace ClientApplication
             InitializeEvents( );
         }
 
-        string Hop = "";
-
         public void InitializeEvents( ) {
-            buttonStart.Click += ButtonStart_Click;
 
-            if(Hop != "")
-                MessageBox.Show( Hop );
-        }
-
-        public string print(string input ) {
-            return (Hop = input);
         }
 
         #region ButtonStart_Click Event

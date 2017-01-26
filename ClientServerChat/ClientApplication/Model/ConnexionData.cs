@@ -8,7 +8,7 @@ namespace ClientApplication.Model
 {
     class ConnexionData
     {
-        private string _pseudo = "";
+        private string _pseudo = "ee";
         public string Pseudo { get { return _pseudo; } set { _pseudo = value; } }
 
         private string _serverIp = "";

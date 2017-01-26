@@ -1,4 +1,5 @@
 ﻿using ClientApplication.Controller;
+using ClientApplication.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace ClientApplication.View
     /// </summary>
     public partial class ConnexionControl : UserControl
     {
-        public ConnexionControl( ) {
+        public ConnexionControl( ) {            
             InitializeComponent( );
             new ConnexionController( this );
             InitializeUIEvents( );
@@ -35,10 +36,7 @@ namespace ClientApplication.View
         public delegate void EventHandlerConnexion( object sender, EventArgs e );
         public event EventHandlerConnexion EventConnexion;
         private void ButtonConnexion_Click( object sender, RoutedEventArgs e ) {
-            if(labelPseudo.Content.Equals("") || labelServerIp.Content.Equals(""))
                 EventConnexion?.Invoke( this, EventArgs.Empty );
-            else
-                MessageBox.Show( "Veuillez remplir tous les champs SVP !" );
         }
         #endregion
 
