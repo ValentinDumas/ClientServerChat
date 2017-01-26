@@ -1,22 +1,17 @@
 ﻿using ClientApplication.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ClientApplication.View;
 
 namespace ClientApplication.Controller
 {
-    abstract class Controller
+    public class Controller
     {
-        private ClientWindow _clientWindow;
-        public ClientWindow ClientWindow { get { return _clientWindow; } set { _clientWindow = value; } }
-
         private IModel _model;
         public IModel Model { get { return _model; } set { _model = value; } }
 
         public Controller( ) {
-            Model = new Model.Model( );
+            if(Model == null ) {
+                Model = new Model.Model( );
+            }     
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApplication.Controller;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,7 @@ namespace ClientApplication.View
         public ChatControl( ) {
             InitializeComponent( );
             InitializeEvents( );
+            new ChatController( this );
         }
 
         private void InitializeEvents( ) {
@@ -34,7 +36,7 @@ namespace ClientApplication.View
         public delegate void EventHandlerLeave( object sender, EventArgs e );
         public event EventHandlerLeave EventLeave;
         private void ButtonLeave_Click( object sender, RoutedEventArgs e ) {
-            EventLeave?.Invoke( this, EventArgs.Empty );
+            EventLeave?.Invoke( this , EventArgs.Empty );
         }
         #endregion
 

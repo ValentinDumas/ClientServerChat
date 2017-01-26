@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClientApplication.Model
 {
-    interface IModel
+    public interface IModel
     {
         ChatData ChatData {
             get;
@@ -22,10 +22,5 @@ namespace ClientApplication.Model
             get;
             set;
         }
-
-        void OpenClientSession( );
-
-        void CloseClientSession( );
-
     }
 }

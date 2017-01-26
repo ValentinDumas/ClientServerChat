@@ -8,14 +8,11 @@ using System.Threading.Tasks;
 
 namespace ClientApplication.Controller
 {
-    class ConnexionController : Controller
-    {
-        private ConnexionControl _connexionControl; // Connexion View
-        private ChatControl _chatControl;           // Chat View
+    class ConnexionController : Controller {
+        private ConnexionControl _connexionControl;
+        public ChatControl _chatControl{get; set;}
 
-        private Model.ConnexionData _connexionData; // Connexion Model
-
-        public ConnexionController( ConnexionControl connexionControl ) {
+        public ConnexionController( ConnexionControl connexionControl) {
             _connexionControl = connexionControl;
             InitializeEvents( );
         }
@@ -25,24 +22,29 @@ namespace ClientApplication.Controller
         }
 
         private void _connexionControl_EventConnexion( object sender, EventArgs e ) {
-            _connexionData = new Model.ConnexionData( );
-            
-            _connexionData.Pseudo   = _connexionControl.textBoxPseudo.Text.ToString( );
-            _connexionData.ServerIp = _connexionControl.textBoxServerIp.Text.ToString( );
-
-            // begin Visibilities !
-            if ( _chatControl == null ) {
-                _chatControl = new ChatControl( );
-            }
-
-            if ( _connexionData.Pseudo == "" ) {
+           
+            Model.ConnexionData.Pseudo = _connexionControl.textBoxPseudo.Text.ToString( );
+            Model.ConnexionData.ServerIp = _connexionControl.textBoxServerIp.Text.ToString( );
+           
+            if ( Model.ConnexionData.Pseudo.Equals("") || Model.ConnexionData.ServerIp.Equals("") ) {
                 Console.WriteLine( "Veuillez remplir tous les champs !" );
+                _connexionControl.labelField.Visibility = Visibility.Visible;
             } else {
-                Console.WriteLine( "Tous les champs sont remplis ! OK !" );
-                Console.WriteLine( "Pseudo = " + _connexionData.Pseudo );
-                Console.WriteLine( "Pseudo = " + _connexionData.ServerIp );
+                if ( _chatControl == null ) {
+                    _chatControl = new ChatControl( );
+                    _connexionControl.gridChat.Children.Add( _chatControl );
+                    _chatControl.EventLeave += ChatControl_EventLeave;
+                }
                 _connexionControl.gridConnexion.Visibility = Visibility.Hidden;
                 _connexionControl.gridChat.Visibility = Visibility.Visible;
+                _connexionControl.labelField.Visibility = Visibility.Hidden;
+            }  
+        }
+
+        private void ChatControl_EventLeave( object sender, EventArgs e ) {
+            if(_connexionControl != null ) {
+                _connexionControl.gridChat.Visibility = Visibility.Hidden;
+                _connexionControl.gridConnexion.Visibility = Visibility.Visible;
             }
         }
     }

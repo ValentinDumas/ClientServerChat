@@ -5,18 +5,21 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using ClientApplication.Model;
+using ClientApplication.View;
 
 namespace ClientApplication.Controller
 {
     class ClientController : Controller
     {
-        public ClientController(ClientWindow clientWindow ) {
-            ClientWindow = clientWindow;
+        private ClientWindow _clientWindow;
+
+        public ClientController( ClientWindow clientWindow ) {
+            _clientWindow = clientWindow;
             InitializeEvents( );            
         }
 
         public void InitializeEvents( ) {
-            ClientWindow.EventStart += ClientWindow_EventStart;
+            _clientWindow.EventStart += ClientWindow_EventStart;
         }
 
         private void ClientWindow_EventStart( object sender, EventArgs e ) {

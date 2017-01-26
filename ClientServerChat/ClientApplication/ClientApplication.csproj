@@ -61,6 +61,8 @@
     <Compile Include="Controller\ClientController.cs" />
     <Compile Include="Controller\ConnexionController.cs" />
     <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Model\BinarySerializer.cs" />
+    <Compile Include="View\IView.cs" />
     <Compile Include="Model\ChatData.cs" />
     <Compile Include="Model\ClientSession.cs" />
     <Compile Include="Model\ConnexionData.cs" />
@@ -72,6 +74,7 @@
     <Compile Include="View\ConnexionControl.xaml.cs">
       <DependentUpon>ConnexionControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\View.cs" />
     <Page Include="View\ChatControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

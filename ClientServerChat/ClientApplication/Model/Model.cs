@@ -46,21 +46,5 @@ namespace ClientApplication.Model
                 ChatData = new ChatData( );
             }
         }
-
-        /// <summary>
-        /// Instantiate a ClientSession object and Open a new session
-        /// </summary>
-        public void OpenClientSession( ) {
-           
-               
-        }
-
-        /// <summary>
-        /// Close Client Session and dispose resources
-        /// </summary>
-        public void CloseClientSession( ) {
-            ClientSession.Close( );
-        }
-
     }
 }

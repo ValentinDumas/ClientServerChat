@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace ClientApplication.Model
 {
-    public class ChatData
+    class BinarySerializer
     {
-        private string _message = String.Empty;
-        public string Message { get { return _message; } set { _message = value; } }
+
     }
 }

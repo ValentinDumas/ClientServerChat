@@ -5,33 +5,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ClientApplication.Controller
 {
     class ChatController : Controller
     {
         private ChatControl _chatControl;
+        private ConnexionControl _connexionControl;
 
-        public ChatController( ChatControl chatControl ) {
-            this._chatControl = chatControl;
+        public ChatController( ChatControl chatControl ){
+            _chatControl = chatControl;
             InitializeEvents( );
         }
 
         public void InitializeEvents( ) {
-            _chatControl.EventLeave += _chatControl_EventLeave;
-            _chatControl.EventSend  += _chatControl_EventSend;
+            _chatControl.EventSend  += ChatControl_EventSend;
         }
 
-        private void _chatControl_EventLeave( object sender, EventArgs e ) {
-            
-        }
-
-        // @TODO : Implement all model classes in 
-        private void _chatControl_EventSend( object sender, EventArgs e ) {
+        private void ChatControl_EventSend( object sender, EventArgs e ) {
             Model.ChatData.Message = _chatControl.textBoxMessage.Text.ToString( );
-            if (_chatControl.textBoxMessage.Text != "" ) {
-                
+            if ( Model.ChatData.Message != "" ) {
+                _chatControl.textBlockChat.Text += Environment.NewLine
+                                                + Model.ChatData.Message;
             }
+            _chatControl.textBoxMessage.Clear( );
         }
     }
 }
