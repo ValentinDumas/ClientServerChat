@@ -9,7 +9,8 @@ namespace ServerApplication.View
     public class View
     {
         public void print( object input ) {
-            Console.WriteLine( input.ToString() );
+            if(input != null)
+                Console.WriteLine( input.ToString() );
         }
     }
 }

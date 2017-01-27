@@ -62,7 +62,7 @@ namespace ServerApplication.Controller
             view.print( "IP Client = " + ip );
 
             while ( true ) {
-                string request = "Client " + cc.Number + " >" + textReader.ReadLine( );
+                string request = /* "Client " + cc.Number + " >" + */ textReader.ReadLine( );
                 view.print( request );
                 broadcast( request );
                 textWriter.Flush( );

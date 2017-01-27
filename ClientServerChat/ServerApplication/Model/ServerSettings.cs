@@ -8,7 +8,7 @@ namespace ServerApplication.Model
 {
     public static class ServerSettings
     {
-        public static string IP = "192.168.1.13";
+        public static string IP = "127.0.0.1";
         public static int PORT = 5000;
         public static bool ISPOWERED = true;
         public static int NBCLIENTS = 0;

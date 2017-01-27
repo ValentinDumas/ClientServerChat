@@ -26,7 +26,8 @@
 
             <Button x:Name="buttonLeave" Content="Leave" Grid.Row="1" Grid.Column="0" FontSize="13" HorizontalAlignment="Left" Margin="10,9.8,0,0" VerticalAlignment="Top" Width="40" Height="29"/>
             <Button x:Name="buttonSend" Content="Send" Grid.Row="1" Grid.Column="1" FontSize="13" FontWeight="Bold" HorizontalAlignment="Left" Margin="69.2,9.8,0,0" VerticalAlignment="Top" Width="75" Height="29"/>
-            <TextBox x:Name="textBoxMessage" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="29" Margin="55,9.8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Text="..." VerticalAlignment="Top" Width="154"/>
+            <TextBox x:Name="textBoxMessage" Grid.ColumnSpan="2" HorizontalAlignment="Left" Height="29" Margin="55,9.8,0,0" Grid.Row="1" TextWrapping="Wrap" VerticalContentAlignment="Center" Text="" VerticalAlignment="Top" Width="154"/>
+            <Label x:Name="labelMessage" Content="Empty messages not allowed !" FontSize="10" Visibility="Hidden" HorizontalAlignment="Left" HorizontalContentAlignment="Center" Foreground="Red" Margin="47.5,289,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Width="170" Grid.RowSpan="2" Height="25"/>
         </Grid>
 
     </Grid>

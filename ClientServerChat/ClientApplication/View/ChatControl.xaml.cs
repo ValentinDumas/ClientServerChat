@@ -21,6 +21,7 @@ namespace ClientApplication.View
     /// </summary>
     public partial class ChatControl : UserControl
     {
+        
         public ChatControl( ) {
             InitializeComponent( );
             InitializeEvents( );

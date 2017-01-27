@@ -23,14 +23,14 @@
                     <Label x:Name="labelPseudo" Content="Pseudo" Grid.Row="0" FontSize="13" HorizontalAlignment="Left" Margin="39,10,0,0" VerticalAlignment="Top" Width="178"/>
                     <TextBox x:Name="textBoxPseudo" Grid.Row="0" VerticalContentAlignment="Center" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="39,41,0,0" TextWrapping="Wrap" FontWeight="Bold" VerticalAlignment="Top" Width="178"/>
                     <Label x:Name="labelServerIp" Content="Server IP" Grid.Row="1" FontSize="13" HorizontalAlignment="Left" Margin="39,10.2,0,0" VerticalAlignment="Top" Width="178"/>
-                    <TextBox x:Name="textBoxServerIp" Grid.Row="1" VerticalContentAlignment="Center" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="39,41,0,0" TextWrapping="Wrap" Text="192.168.1.13" FontWeight="Bold" VerticalAlignment="Top" Width="178"/>
+                    <TextBox x:Name="textBoxServerIp" Grid.Row="1" VerticalContentAlignment="Center" FontSize="13" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Height="34" Margin="39,41,0,0" TextWrapping="Wrap" Text="127.0.0.1" FontWeight="Bold" VerticalAlignment="Top" Width="178"/>
                     <Label x:Name="labelField" Content="Veuillez remplir tous les champs !" FontSize="10" Foreground="Red" Visibility="Hidden" Grid.Row="2"  HorizontalAlignment="Left" HorizontalContentAlignment="Center" Margin="39,10.4,0,0" VerticalAlignment="Top" Width="178" Height="23"/>
                     <Button x:Name="buttonConnexion" Content="Connexion" Grid.Row="2" HorizontalAlignment="Left" Margin="39,33.4,0,0" FontSize="14" VerticalAlignment="Top" Width="178" Height="35"/>
                 </Grid>
             </GroupBox>
         </Grid>
         <Grid x:Name="gridChat" Grid.Row="1" Visibility="Hidden">
-            <local:ChatControl x:Name="chatControl"/>
+            <!--<local:ChatControl x:Name="chatControl"/>-->
         </Grid>
     </Grid>
 </UserControl>

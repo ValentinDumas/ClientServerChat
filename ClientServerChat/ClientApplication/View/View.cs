@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClientApplication.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace ClientApplication.View
 {
-    public class View : IView
-    {
+    public class View : IView {
+
+        public IModel Model {get;set;}
+
         private ChatControl _chatControl;
         public ChatControl ChatControl {
             get {

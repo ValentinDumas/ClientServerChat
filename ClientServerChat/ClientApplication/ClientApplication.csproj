@@ -58,14 +58,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controller\ChatController.cs" />
-    <Compile Include="Controller\ClientController.cs" />
     <Compile Include="Controller\ConnexionController.cs" />
     <Compile Include="Controller\Controller.cs" />
+    <Compile Include="Controller\IController.cs" />
     <Compile Include="Model\BinarySerializer.cs" />
     <Compile Include="View\IView.cs" />
     <Compile Include="Model\ChatData.cs" />
     <Compile Include="Model\ClientSession.cs" />
-    <Compile Include="Model\ConnexionData.cs" />
     <Compile Include="Model\IModel.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="View\ChatControl.xaml.cs">
@@ -97,7 +96,7 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\ClientSettings.cs" />
+    <Compile Include="Model\ConnexionSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

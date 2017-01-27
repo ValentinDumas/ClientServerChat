@@ -10,11 +10,4 @@
     <Grid x:Name="gridConnexion">
         <local:ConnexionControl x:Name="connexionControl" Grid.Row="1"/>
     </Grid>
-    
-  
-  
-        
-  
-    
-   
 </Window>

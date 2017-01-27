@@ -23,7 +23,6 @@ namespace ClientApplication
     {
         public ClientWindow( ) {
             InitializeComponent( );
-            new ClientController( this );
             InitializeEvents( );
         }
 

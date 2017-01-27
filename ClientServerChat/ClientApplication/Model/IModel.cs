@@ -13,14 +13,11 @@ namespace ClientApplication.Model
             set;
         }
 
-        ConnexionData ConnexionData {
-            get;
-            set;
-        }
-
         ClientSession ClientSession {
             get;
             set;
         }
+
+        void CreateSession( );
     }
 }

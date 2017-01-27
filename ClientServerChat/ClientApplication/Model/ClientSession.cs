@@ -12,6 +12,15 @@ namespace ClientApplication.Model
     public class ClientSession
     {
         private Socket _socket;
+        public Socket Socket {
+            get {
+                return _socket;
+            }
+            set {
+                _socket = value;
+            }
+        }
+
         private IPEndPoint _ipEndPoint;
         private NetworkStream _networkStream;
 
@@ -36,29 +45,30 @@ namespace ClientApplication.Model
         }
 
         public ClientSession( Socket socket, IPEndPoint ipEndPoint ) {
-            this._socket = socket;
+            Socket = socket;
             this._ipEndPoint = ipEndPoint;
-            
         }
 
         public void Open( ) {
             // Socket --> Connection to Access Point
-            this._socket.Connect( this._ipEndPoint );
-            _networkStream = new NetworkStream( this._socket );
+            Socket.Connect( this._ipEndPoint );
+            _networkStream = new NetworkStream( Socket );
             TextReader = new StreamReader( _networkStream );
             TextWriter = new StreamWriter( _networkStream );
         }
 
         public void Close( ) {
             // Release the socket.
-            this._socket.Shutdown( SocketShutdown.Both );
+            Socket.Shutdown( SocketShutdown.Both );
             // Disconnect the socket
-            this._socket.Disconnect( true );
+            Socket.Disconnect( true );
         }
 
         // @TODO : Implement this to check if server is up/down
-        public bool SocketConnected(Socket socket ) {
-            return false;
+        public bool SocketConnected( Socket s ) {
+            bool pool = s.Poll(1000, SelectMode.SelectRead);
+            bool availability = (s.Available == 0);
+            return (pool && availability);
         }
     }
 }
