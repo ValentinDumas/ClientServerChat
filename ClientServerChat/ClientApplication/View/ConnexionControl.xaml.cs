@@ -2,7 +2,9 @@
 using ClientApplication.Model;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
+using System.Runtime.InteropServices.ComTypes;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -22,14 +24,23 @@ namespace ClientApplication.View
     /// </summary>
     public partial class ConnexionControl : UserControl
     {
+        private ConnexionController _c = null;
+        
         public ConnexionControl( ) {            
             InitializeComponent( );
-            new ConnexionController( this );
+            _c = new ConnexionController( this );
             InitializeUIEvents( );
         }
 
         public void InitializeUIEvents( ) {
             buttonConnexion.Click += ButtonConnexion_Click;
+            Application.Current.Exit += OnAppExit;
+        }
+
+        public void OnAppExit(object sender, EventArgs e)
+        {
+            _c.Stop();
+            Application.Current.Shutdown();
         }
 
         #region Event Handler Connexion (Start)

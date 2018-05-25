@@ -2,7 +2,9 @@
 using System.Windows;
 using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 using ClientApplication.Model;
@@ -22,47 +24,95 @@ namespace ClientApplication.Controller
             InitializeEvents( );
         }
 
+        public void Stop()
+        {
+            int a = 3;
+            Console.Write("");
+            is_running = false;
+        }
+
         public void InitializeEvents( ) {
             _connexionControl.EventConnexion += _connexionControl_EventConnexion;
         }
 
         private void _connexionControl_EventConnexion( object sender, EventArgs e ) {
-            
-            ConnexionSettings.PSEUDO = _connexionControl.textBoxPseudo.Text.ToString( );
-            ConnexionSettings.IP = _connexionControl.textBoxServerIp.Text.ToString( );
-           
-            if ( ConnexionSettings.PSEUDO.Equals(String.Empty) || ConnexionSettings.IP.Equals(String.Empty) ) {
-                Console.WriteLine( "Veuillez remplir tous les champs !" );
-                _connexionControl.labelField.Visibility = Visibility.Visible;
-            } else {
-                if ( _chatControl == null ) {
-                    _chatControl = new ChatControl( );
-                    _connexionControl.gridChat.Children.Add( _chatControl );
-                    _chatControl.EventLeave += ChatControl_EventLeave;
-                    _chatControl.EventSend += ChatControl_EventSend;
-                }
 
-                _connexionControl.gridConnexion.Visibility = Visibility.Hidden;
-                _connexionControl.gridChat.Visibility = Visibility.Visible;
-                _connexionControl.labelField.Visibility = Visibility.Hidden;
+            try
+            {
+                ConnexionSettings.PSEUDO = _connexionControl.textBoxPseudo.Text.ToString();
+                ConnexionSettings.IP = _connexionControl.textBoxServerIp.Text.ToString();
 
-                /**/
-                if ( !ConnexionSettings.CONNECTED ) {
-                    Model.CreateSession( );
-                    th = new Thread(ListenForResponse);
-                    th.Start( );
+                // One or more of the fields are empty
+                if (ConnexionSettings.PSEUDO.Equals(String.Empty) || ConnexionSettings.IP.Equals(String.Empty))
+                {
+                    Console.WriteLine(@"Veuillez remplir tous les champs !");
+                    _connexionControl.labelField.Visibility = Visibility.Visible;
                 }
-                ConnexionSettings.CONNECTED = true;
-                /**/
+                else
+                {
+                    if (_chatControl == null)
+                    {
+                        _chatControl = new ChatControl();
+                        _connexionControl.gridChat.Children.Add(_chatControl);
+                        _chatControl.EventLeave += ChatControl_EventLeave;
+                        _chatControl.EventSend += ChatControl_EventSend;
+                    }
+
+                    /**/
+                    if (!ConnexionSettings.CONNECTED)
+                    {
+                        Model.CreateSession();
+
+                        th = new Thread(ListenForResponse);
+                        th.Start();
+                    }
+
+                    ConnexionSettings.CONNECTED = true;
+                    /**/
+
+                    _connexionControl.gridConnexion.Visibility = Visibility.Hidden;
+                    _connexionControl.gridChat.Visibility = Visibility.Visible;
+                    _connexionControl.labelField.Visibility = Visibility.Hidden;
+                }
+            }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
             }
         }
 
-        private void ListenForResponse( ) {
-            while ( true ) {
-                string reponse = Model.ClientSession.TextReader.ReadLine();
-                Console.WriteLine( reponse );
-                Application.Current.Dispatcher.Invoke( new Action<string>( Display ), reponse ); // Invoke Afficher !
+        private static bool is_running = false;
+
+        bool SocketConnected(Socket s)
+        {
+            bool part1 = s.Poll(1000, SelectMode.SelectRead);
+            bool part2 = (s.Available == 0);
+            if (part1 && part2)
+                return false;
+            else
+                return true;
+        }
+        
+        private void ListenForResponse( )
+        {
+            is_running = true;
+            while ( is_running ) {
+                try
+                {
+                        string reponse = Model.ClientSession.TextReader.ReadLine();
+                        Console.WriteLine( reponse );
+                        Application.Current.Dispatcher.Invoke( new Action<string>( Display ), reponse ); // Invoke Afficher
+                }
+                catch (Exception e)
+                {
+                    is_running = false;
+                    //Console.WriteLine(e);
+                }
+                
             }
+            
+            th.Join();
+
         }
 
         private void Display( string obj ) {

@@ -62,10 +62,18 @@ namespace ServerApplication.Controller
             view.print( "IP Client = " + ip );
 
             while ( true ) {
-                string request = /* "Client " + cc.Number + " >" + */ textReader.ReadLine( );
-                view.print( request );
-                broadcast( request );
-                textWriter.Flush( );
+                try
+                {
+                    string request = /* "Client " + cc.Number + " >" + */ textReader.ReadLine( );
+                    view.print( request );
+                    broadcast( request );
+                    textWriter.Flush( );
+                }
+                catch (Exception e)
+                {
+                    //Console.WriteLine(e);
+                    //model.clients.RemoveAll(x => x.Number == cc.Number);
+                }
             }
         }
 
